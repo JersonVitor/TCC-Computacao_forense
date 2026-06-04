@@ -39,7 +39,7 @@ def executar_pericia_forense_hibrida(caminho_audio, caminho_saida_pdf=None):
     os.makedirs(temp_dir, exist_ok=True)
     
     if caminho_saida_pdf is None:
-        caminho_saida_pdf = os.path.join(config.OUTPUT_DIR, f"Laudo_Pericial_Robustecido_{nome_base}.pdf")
+        caminho_saida_pdf = os.path.join(config.OUTPUT_DIR, f"Laudo_Pericial_{nome_base}.pdf")
 
     # 1. CADEIA DE CUSTÓDIA
     hash_original = calcular_sha256(caminho_audio)

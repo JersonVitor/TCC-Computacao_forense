@@ -101,12 +101,12 @@ def treinar_resnet18(pasta_features=config.PASTA_FEATURES_SPECTROGRAM,
         # Salva o melhor checkpoint com base na perda de validação robusta
         if epoch_val_loss < melhor_perda_val:
             melhor_perda_val = epoch_val_loss
-            caminho_melhor_modelo = os.path.join(pasta_saida, "resnet18_asvspoof_robusto_melhor.pth")
+            caminho_melhor_modelo = os.path.join(pasta_saida, "resnet18_pre_treinado.pth")
             torch.save(model.state_dict(), caminho_melhor_modelo)
             print(f"[SALVO] Melhor checkpoint robusto persistido.")
 
     # Salva pesos finais consolidados e histórico
-    caminho_modelo_final = os.path.join(pasta_saida, "resnet18_asvspoof_robusto_final.pth")
+    caminho_modelo_final = os.path.join(pasta_saida, "resnet18_final.pth")
     torch.save(model.state_dict(), caminho_modelo_final)
 
     with open(os.path.join(pasta_saida, "historico_treino_robusto.json"), "w") as f:
@@ -214,12 +214,12 @@ def treinar_rawnet2(pasta_features=config.PASTA_FEATURES_RAW,
         # Salva o melhor checkpoint da RawNet2
         if epoch_val_loss < melhor_perda_val:
             melhor_perda_val = epoch_val_loss
-            caminho_melhor_modelo = os.path.join(pasta_saida, "rawnet2_asvspoof_robusto_melhor.pth")
+            caminho_melhor_modelo = os.path.join(pasta_saida, "rawnet2_pre_treinado.pth")
             torch.save(model.state_dict(), caminho_melhor_modelo)
             print(f"[SALVO] Melhor checkpoint da RawNet2 atualizado.")
 
     # Salva pesos finais e histórico
-    torch.save(model.state_dict(), os.path.join(pasta_saida, "rawnet2_asvspoof_robusto_final.pth"))
+    torch.save(model.state_dict(), os.path.join(pasta_saida, "rawnet2_final.pth"))
 
     with open(os.path.join(pasta_saida, "historico_treino_rawnet2.json"), "w") as f:
         json.dump(history, f, indent=4)

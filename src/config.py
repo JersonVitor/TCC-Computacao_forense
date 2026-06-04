@@ -25,8 +25,8 @@ PASTA_FEATURES_SPECTROGRAM = PASTA_SAIDA_SPECTROGRAM
 PASTA_FEATURES_RAW = PASTA_SAIDA_RAW
 
 # Caminhos dos modelos preditivos
-PATH_PESOS_RESNET = os.path.join(MODELS_DIR, "resnet18_asvspoof_robusto_melhor.pth")
-PATH_PESOS_RAWNET = os.path.join(MODELS_DIR, "rawnet2_asvspoof_robusto_melhor.pth")
+PATH_PESOS_RESNET = os.path.join(MODELS_DIR, "resnet18_pre_treinado.pth")
+PATH_PESOS_RAWNET = os.path.join(MODELS_DIR, "rawnet2_pre_treinado.pth")
 
 # Configurações de Treinamento Geral
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")

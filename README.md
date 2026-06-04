@@ -27,6 +27,22 @@ O framework realiza a análise de autenticidade de gravações de áudio para de
 
 ---
 
+## Como Preparar a Base de Dados (ASVspoof 2021 LA)
+
+Para que o framework execute a extração de características e o treinamento automaticamente sem necessidade de qualquer alteração de código, você deve preparar a base de dados do desafio **ASVspoof 2021 Logical Access (LA)**:
+
+1. **Obtenção dos Áudios (.flac)**:
+   - Baixe o conjunto de dados oficial de avaliação (Evaluation Set) no site oficial do desafio [ASVspoof](https://www.asvspoof.org) ou diretamente pela página do Zenodo: [Zenodo ASVspoof 2021 LA Dataset](https://zenodo.org/records/4837263).
+   - Extraia e copie os arquivos de áudio `.flac` para a pasta: `./data/audios/`
+
+2. **Obtenção dos Metadados/Labels (trial_metadata.txt)**:
+   - Baixe as chaves/metadados oficiais de avaliação do repositório do desafio: [LA CM Trial Metadata](https://raw.githubusercontent.com/asvspoof-challenge/2021/main/LA/CM/trial_metadata.txt).
+   - Salve o arquivo com o nome `trial_metadata.txt` diretamente na pasta: `./data/`
+
+Após colocar estes arquivos em suas devidas pastas, os caminhos configurados em `src/config.py` farão o mapeamento e a resolução de arquivos de forma 100% automatizada.
+
+---
+
 ## Instalação
 
 ### Pré-requisitos
@@ -103,7 +119,7 @@ Realiza a perícia individual de uma gravação. O áudio é analisado pelas red
 ```bash
 python main.py pericia --audio ./data/audios/LA_E_1000153.flac
 ```
-O PDF final será salvo na pasta `output/` como `Laudo_Pericial_Robustecido_LA_E_1000153.pdf`.
+O PDF final será salvo na pasta `output/` como `Laudo_Pericial_LA_E_1000153.pdf`.
 
 ### 5. Estatísticas em Lote por Veracidade
 Lê todos os áudios comprimidos de uma pasta, extrai suas invariantes biológicas de laringe, calcula médias agrupando pelo termo `Verdade` ou `Mentira` contido no nome dos arquivos e gera uma tabela do TCC exportável:
